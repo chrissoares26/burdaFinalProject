@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}CHIP Article{% endblock %}</title>
+
+    {% block stylesheets %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ asset('style/target.css') }}"
+    />
+    <script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
+    {% endblock %}
+  </head>
+  <body class="site">
+    {% if error|default %}
+    <p>{{ error }}</p>
+    {% endif %} {# HEADER #}
+    <header>
+      <nav class="main-header">
+        <a href="https://chip.de"" class="nav-logo"> <img src="{{ asset('images/logo.svg') }}" /> </a>
+        <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+      </nav>
+      
+    </header>
+
+    {% block body %} {% endblock %} {# FOOTER #}
+
+    <footer>
+      <!-- Footer main -->
+      <section class="container">
+      <section class="ft-main">
+        <div class="ft-main-item">
+        <a href="https://chip.de""> <img src="{{ asset('images/logo.svg') }}" /> </a>
+
+        </div>
+      </section>
+     
+      <!-- Footer social -->
+      <section class="ft-social">
+        <ul class="ft-social-list">
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-github"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </section>
+      </section>
+     
+      <!-- Footer legal -->
+      
+    </footer>
+
+    {% block javascripts %}
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/hamburger.js') }}"></script>
+    {% endblock %}
+  </body>
+</html>

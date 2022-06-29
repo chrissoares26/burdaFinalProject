@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {# MAIN #}
+    <main class="content">
+        
+    
+            <section class="main-content">
+                {% if data %}
+                    {% for article in data.contents %}
+
+                        <article>
+
+                            {% if article.image %}
+                                <div class="article-img">
+                                    <img src="{{ article.image.url }}" alt="{{ article.image.text }}"
+                                         height="{{ article.image.height }}" width="{{ article.image.width }}">
+                                </div>
+                            {% endif %}
+
+                            <h2>{{ article.id }} - {{ article.headline }}</h2>
+                            {% autoescape %}
+                            <p>{{ article.text|raw }}</p>
+                            {% endautoescape %}
+                        </article>
+
+                    {% endfor %}
+                {% endif %}
+            </section>
+
+            <section class="side-bar">
+                {% if data %}
+
+                    <aside>
+                        <div class="aside-img">
+                            <img src="{{ data.teaserImage.url }}"
+                                 alt="{{ data.teaserImage.text }}">
+                            <figcaption>{{ data.teaserImage.source }}</figcaption>
+                        </div>
+                        <h2>{{ data.headline }}</h2>
+                        <h3>{{ data.subtitle }}</h3>
+                        <p>Created at:
+                            <time>{{ data.createdAt.timestamp | date("d/m/Y") }}</time>
+                        </p>
+                        <p>Display date:
+                            <time>{{ data.displayDate.timestamp | date("d/m/Y") }}</time>
+                        </p>
+                        <p>Updated at:
+                            <time>{{ data.updatedAt.timestamp | date("d/m/Y") }}</time>
+                        </p>
+                        <p>{{ data.introduction }}</p>
+                        <strong>Author: <span>{{ data.author.firstName }} {{ data.author.lastName }}</span></strong>
+                    </aside>
+
+                {% endif %}
+            </section>
+       
+    </main>
+
+{% endblock %}
